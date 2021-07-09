@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example data sets &#8212; SciKit GStat 0.6.6 documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MetricSpace - Coordinate representation" href="metric_space.html" />
+    <link rel="prev" title="Kriging Class" href="kriging.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">SciKit GStat</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../install.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../userguide/userguide.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../tutorials/tutorials.html">
+  Tutorials
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../technical/technical.html">
+  Technical Notes
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="reference.html">
+  Code Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../changelog.html">
+  Changelog
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://mmaelicke.github.io/scikit-gstat/SciKitGStat.pdf">
+  PDF
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/mmaelicke/scikit-gstat" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p class="caption">
+ <span class="caption-text">
+  Contents:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="variogram.html">
+   Variogram Class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="directionalvariogram.html">
+   DirectionalVariogram Class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spacetimevariogram.html">
+   SpaceTimeVariogram class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="binning.html">
+   Binning functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="estimator.html">
+   Estimator Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="models.html">
+   Variogram models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kriging.html">
+   Kriging Class
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Example data sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="metric_space.html">
+   MetricSpace - Coordinate representation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="util.html">
+   Utility Functions
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-skgstat.data">
+   Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#utility-functions">
+   Utility Functions
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="example-data-sets">
+<h1>Example data sets<a class="headerlink" href="#example-data-sets" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-skgstat.data">
+<span id="datasets"></span><h2>Datasets<a class="headerlink" href="#module-skgstat.data" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="skgstat.data.aniso">
+<span class="sig-prename descclassname"><span class="pre">skgstat.data.</span></span><span class="sig-name descname"><span class="pre">aniso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skgstat/data.html#aniso"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skgstat.data.aniso" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample of the <a class="reference internal" href="#skgstat.data.aniso_field" title="skgstat.data.aniso_field"><code class="xref py py-func docutils literal notranslate"><span class="pre">ansio_field</span></code></a>.
+By default the greyscale image is sampled
+at 500 random locations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of sample points to use.</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – By default a seed is set to always return the same
+sample for same N and band input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>result</strong> – Dictionary of the sample and a citation information.
+The sample is a tuple of two numpy arrays.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skgstat.data._loader.field</span></code></dt><dd><p>field loader</p>
+</dd>
+<dt><a class="reference internal" href="#skgstat.data.aniso_field" title="skgstat.data.aniso_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aniso_field</span></code></a></dt><dd><p>Return the full field</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This image was created using <code class="xref any docutils literal notranslate"><span class="pre">gstools.SRF</span></code>.
+The spatial random field was created using a Gaussian model
+and has a size of 500x500 pixel. The created field
+was normalized and rescaled to the value range of a
+<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint8" title="(in NumPy v1.21)"><code class="xref any docutils literal notranslate"><span class="pre">uint8</span></code></a>.
+The spatial model includes a small nugget (~ 1/25 of the value range).
+If you use this example somewhere else, please cite
+SciKit-GStat <a href="#id9"><span class="problematic" id="id1">[501]_</span></a>, as it is distributed with the library.</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets">501</span></dt>
+<dd><p>Mirko Mälicke, Helge David Schneider, Sebastian Müller,
+&amp; Egil Möller. (2021, April 20). mmaelicke/scikit-gstat: A scipy
+flavoured geostatistical variogram analysis toolbox (Version v0.5.0).
+Zenodo. <a class="reference external" href="http://doi.org/10.5281/zenodo.4704356">http://doi.org/10.5281/zenodo.4704356</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skgstat.data.aniso_field">
+<span class="sig-prename descclassname"><span class="pre">skgstat.data.</span></span><span class="sig-name descname"><span class="pre">aniso_field</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skgstat/data.html#aniso_field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skgstat.data.aniso_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image of a greyscale image with geometric anisotropy.
+The anisotropy has a North-Easth orientation and has
+a approx. 3 times larger correlation length than in
+the perpendicular orientation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>result</strong> – Dictionary of the sample and a citation information.
+The sample a numpy array repesenting the image.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skgstat.data._loader.field</span></code></dt><dd><p>field loader</p>
+</dd>
+<dt><a class="reference internal" href="#skgstat.data.aniso" title="skgstat.data.aniso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aniso</span></code></a></dt><dd><p>Return a sample</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This image was created using <code class="xref any docutils literal notranslate"><span class="pre">gstools.SRF</span></code>.
+The spatial random field was created using a Gaussian model
+and has a size of 500x500 pixel. The created field
+was normalized and rescaled to the value range of a
+<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint8" title="(in NumPy v1.21)"><code class="xref any docutils literal notranslate"><span class="pre">uint8</span></code></a>.
+The spatial model includes a small nugget (~ 1/25 of the value range).
+If you use this example somewhere else, please cite
+SciKit-GStat <a href="#id10"><span class="problematic" id="id3">[501]_</span></a>, as it is distributed with the library.</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets">501</span></dt>
+<dd><p>Mirko Mälicke, Helge David Schneider, Sebastian Müller,
+&amp; Egil Möller. (2021, April 20). mmaelicke/scikit-gstat: A scipy
+flavoured geostatistical variogram analysis toolbox (Version v0.5.0).
+Zenodo. <a class="reference external" href="http://doi.org/10.5281/zenodo.4704356">http://doi.org/10.5281/zenodo.4704356</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skgstat.data.pancake">
+<span class="sig-prename descclassname"><span class="pre">skgstat.data.</span></span><span class="sig-name descname"><span class="pre">pancake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skgstat/data.html#pancake"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skgstat.data.pancake" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample of the <a class="reference internal" href="#skgstat.data.pancake_field" title="skgstat.data.pancake_field"><code class="xref py py-func docutils literal notranslate"><span class="pre">pancake_field</span></code></a>.
+By default, the Red band is sampled at 500 random
+location without replacement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of sample points to use.</p></li>
+<li><p><strong>band</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – can be 0 (Red), 1 (Green), 2 (Blue) or <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, which
+will average all three RGB bands</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – By default a seed is set to always return the same
+sample for same N and band input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>result</strong> – Dictionary of the sample and a citation information.
+The sample is a tuple of two numpy arrays.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">get_sample</span></code>
+<a class="reference internal" href="#skgstat.data.pancake_field" title="skgstat.data.pancake_field"><code class="xref py py-func docutils literal notranslate"><span class="pre">pancake_field</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The image originates from a photograph of an actual pancake.
+The image was cropped to an 500x500 pixel extent keeping the
+center of the original photograph.
+If you use this example somewhere else, please cite
+SciKit-GStat <a href="#id11"><span class="problematic" id="id5">[501]_</span></a>, as it is distributed with the library.</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id6"><span class="brackets">501</span></dt>
+<dd><p>Mirko Mälicke, Helge David Schneider, Sebastian Müller,
+&amp; Egil Möller. (2021, April 20). mmaelicke/scikit-gstat: A scipy
+flavoured geostatistical variogram analysis toolbox (Version v0.5.0).
+Zenodo. <a class="reference external" href="http://doi.org/10.5281/zenodo.4704356">http://doi.org/10.5281/zenodo.4704356</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skgstat.data.pancake_field">
+<span class="sig-prename descclassname"><span class="pre">skgstat.data.</span></span><span class="sig-name descname"><span class="pre">pancake_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skgstat/data.html#pancake_field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#skgstat.data.pancake_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image of a pancake with apparent spatial structure.
+The pankcake has three RGB bands.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>band</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – can be 0 (Red), 1 (Green), 2 (Blue) or <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>, which
+will average all three RGB bands</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>result</strong> – Dictionary of the sample and a citation information.
+The sample is 2D numpy array of the field.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">skgstat.data._loader.field</span></code>, <a class="reference internal" href="#skgstat.data.pancake" title="skgstat.data.pancake"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skgstat.data.pancake</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The image originates from a photograph of an actual pancake.
+The image was cropped to an 500x500 pixel extent keeping the
+center of the original photograph.
+If you use this example somewhere else, please cite
+SciKit-GStat <a href="#id12"><span class="problematic" id="id7">[501]_</span></a>, as it is distributed with the library.</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id8"><span class="brackets">501</span></dt>
+<dd><p>Mirko Mälicke, Helge David Schneider, Sebastian Müller,
+&amp; Egil Möller. (2021, April 20). mmaelicke/scikit-gstat: A scipy
+flavoured geostatistical variogram analysis toolbox (Version v0.5.0).
+Zenodo. <a class="reference external" href="http://doi.org/10.5281/zenodo.4704356">http://doi.org/10.5281/zenodo.4704356</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="utility-functions">
+<h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>..automodule:: skgstat.data._loader</dt><dd><dl class="field-list simple">
+<dt class="field-odd">members</dt>
+<dd class="field-odd"><p>field, get_sample</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="kriging.html" title="previous page">Kriging Class</a>
+    <a class='right-next' id="next-link" href="metric_space.html" title="next page">MetricSpace - Coordinate representation</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Mirko Mälicke.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

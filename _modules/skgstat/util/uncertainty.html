@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>skgstat.util.uncertainty &#8212; SciKit GStat 0.6.6 documentation</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/gallery.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../../index.html">
+<p class="title">SciKit GStat</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../install.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting_started.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../userguide/userguide.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../tutorials/tutorials.html">
+  Tutorials
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../technical/technical.html">
+  Technical Notes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../reference/reference.html">
+  Code Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../changelog.html">
+  Changelog
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://mmaelicke.github.io/scikit-gstat/SciKitGStat.pdf">
+  PDF
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/mmaelicke/scikit-gstat" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for skgstat.util.uncertainty</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Estimate uncertainties propagated through the Variogram</span>
+<span class="sd">using a MonteCarlo approach</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">skgstat</span> <span class="kn">import</span> <span class="n">Variogram</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+
+
+<div class="viewcode-block" id="propagate"><a class="viewcode-back" href="../../../reference/util.html#skgstat.util.uncertainty.propagate">[docs]</a><span class="k">def</span> <span class="nf">propagate</span><span class="p">(</span>
+    <span class="n">variogram</span><span class="p">:</span> <span class="n">Variogram</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">source</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;values&#39;</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">evalf</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;experimental&#39;</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_bounds</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Uncertainty propagation for the variogram.</span>
+<span class="sd">    For a given :class:`Variogram &lt;skgstat.Variogram&gt;`</span>
+<span class="sd">    instance a source of error and scale of error</span>
+<span class="sd">    distribution can be specified. The function will</span>
+<span class="sd">    propagate the uncertainty into different parts of</span>
+<span class="sd">    the :class:`Variogram &lt;skgstat.Variogram&gt;` and</span>
+<span class="sd">    return the confidence intervals or error bounds.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variogram : skgstat.Variogram</span>
+<span class="sd">        The base variogram. The variogram parameters will</span>
+<span class="sd">        be used as fixed arguments for the Monte Carlo</span>
+<span class="sd">        simulation.</span>
+<span class="sd">    source : list</span>
+<span class="sd">        Source of uncertainty. This has to be an attribute</span>
+<span class="sd">        of :class:`Variogram &lt;skgstat.Variogram&gt;`. Right</span>
+<span class="sd">        now only ``&#39;values&#39;`` is really supported, anything</span>
+<span class="sd">        else is untested.</span>
+<span class="sd">    sigma : list</span>
+<span class="sd">        Standard deviation of the error distribution.</span>
+<span class="sd">    evalf : list</span>
+<span class="sd">        Evaluation function. This specifies, which part of</span>
+<span class="sd">        the :class:`Variogram &lt;skgstat.Variogram&gt;` should be</span>
+<span class="sd">        used to be evaluated. Possible values are</span>
+<span class="sd">        ``&#39;experimental&#39;`` for the experimental variogram,</span>
+<span class="sd">        ``&#39;model&#39;`` for the fitted model and ``parameter&#39;``</span>
+<span class="sd">        for the variogram parameters</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        If True, the uncertainty_framework package used under</span>
+<span class="sd">        the hood will print a progress bar to the console.</span>
+<span class="sd">        Defaults to False.</span>
+<span class="sd">    use_bounds : bool</span>
+<span class="sd">        Shortcut to set the confidence interval bounds to the</span>
+<span class="sd">        minimum and maximum value and thus return the error</span>
+<span class="sd">        margins over a confidence interval.</span>
+
+<span class="sd">    Keyword Arguments</span>
+<span class="sd">    -----------------</span>
+<span class="sd">    distribution : str</span>
+<span class="sd">        Any valid :any:`numpy.random` distribution function, that</span>
+<span class="sd">        takes the scale as argument.</span>
+<span class="sd">        Defaults to ``&#39;normal&#39;``.</span>
+<span class="sd">    q : int</span>
+<span class="sd">        Width (percentile) of the confidence interval. Has to be a</span>
+<span class="sd">        number between 0 and 100. 0 will result in the minimum and</span>
+<span class="sd">        maximum value as bounds. 100 turns both bounds into the</span>
+<span class="sd">        median value.</span>
+<span class="sd">        Defaults to ``10``</span>
+<span class="sd">    num_iter : int</span>
+<span class="sd">        Number of iterations used in the Monte Carlo simulation.</span>
+<span class="sd">        Defaults to ``500``.</span>
+<span class="sd">    eval_at : int</span>
+<span class="sd">        If evalf is set to model, the theoretical model get evaluated</span>
+<span class="sd">        at this many evenly spaced lags up to maximum lag.</span>
+<span class="sd">        Defaults to ``100``.</span>
+<span class="sd">    n_jobs : int</span>
+<span class="sd">        The evaluation can be performed in parallel. This will specify</span>
+<span class="sd">        how many processes may be spawned in parallel. None will spwan</span>
+<span class="sd">        only one (default).</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            This is an untested experimental feature.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    conf_interval : numpy.ndarray</span>
+<span class="sd">        Confidence interval of the uncertainty propagation as</span>
+<span class="sd">        [lower, median, upper]. If more than one evalf is given, a</span>
+<span class="sd">        list of ndarrays will be returned.</span>
+<span class="sd">        See notes for more details.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For each member of the evaluated property, the lower and upper bound</span>
+<span class="sd">    along with the median value is retuned as ``[low, median, up]``.</span>
+<span class="sd">    Thus the returned array has the shape ``(N, 3)``.</span>
+<span class="sd">    N is the lengh of evaluated property, which is</span>
+<span class="sd">    :func:`n_lags &lt;skgstat.Variogram.n_lags` for ``&#39;experimental&#39;``,</span>
+<span class="sd">    either ``3`` for ``&#39;parameter&#39;`` or ``4`` if</span>
+<span class="sd">    :func:`Variogram.model = &#39;stable&#39; | &#39;matern&#39; &lt;skgstat.Variogram.model&gt;`</span>
+<span class="sd">    and ``100`` for ``&#39;model&#39;`` as the model gets evaluated at</span>
+<span class="sd">    100 evenly spaced lags up to the maximum lag class. This amount</span>
+<span class="sd">    can be changed using the eval_at parameter.</span>
+
+<span class="sd">    If more than one evalf parameter is given, the Variogram will be</span>
+<span class="sd">    evaluated at multiple steps and each one will be returned as a</span>
+<span class="sd">    confidence interval. Thus if ``len(evalf) == 2``, a list containing</span>
+<span class="sd">    two confidence interval matrices will be returned.</span>
+<span class="sd">    The order is [experimental, parameter, model].</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># handle error bounds shortcut</span>
+    <span class="k">if</span> <span class="n">use_bounds</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;q&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># extract the MetricSpace to speed things up a bit</span>
+    <span class="n">metricSpace</span> <span class="o">=</span> <span class="n">variogram</span><span class="o">.</span><span class="n">_X</span>
+
+    <span class="c1"># get the source of error</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="p">[</span><span class="n">source</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="n">sigma</span> <span class="o">=</span> <span class="p">[</span><span class="n">sigma</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evalf</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">evalf</span> <span class="o">=</span> <span class="p">[</span><span class="n">evalf</span><span class="p">]</span>
+
+    <span class="c1"># get the static variogram parameters</span>
+    <span class="n">_var_opts</span> <span class="o">=</span> <span class="n">variogram</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;params&#39;</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="n">omit_names</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">]</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_var_opts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">omit_names</span><span class="p">}</span>
+
+    <span class="c1"># add back the metric space</span>
+    <span class="n">args</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metricSpace</span>
+
+    <span class="c1"># build the parameter field</span>
+    <span class="n">num_iter</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_iter&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;seed&#39;</span><span class="p">))</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;distribution&#39;</span><span class="p">,</span> <span class="s1">&#39;normal&#39;</span><span class="p">))</span>
+    <span class="n">param_field</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iter</span><span class="p">):</span>
+        <span class="n">par</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">args</span><span class="p">}</span>
+
+        <span class="c1"># add the noisy params</span>
+        <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+            <span class="n">obs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">variogram</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">1</span>
+            <span class="n">par</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+
+        <span class="c1"># append to param field</span>
+        <span class="n">param_field</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">par</span><span class="p">)</span>
+
+    <span class="c1"># define the eval function</span>
+    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">par</span><span class="p">):</span>
+        <span class="n">vario</span> <span class="o">=</span> <span class="n">Variogram</span><span class="p">(</span><span class="o">**</span><span class="n">par</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="s1">&#39;experimental&#39;</span> <span class="ow">in</span> <span class="n">evalf</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vario</span><span class="o">.</span><span class="n">experimental</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;parameter&#39;</span> <span class="ow">in</span> <span class="n">evalf</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vario</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="n">evalf</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">vario</span><span class="o">.</span><span class="n">bins</span><span class="p">),</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;eval_at&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vario</span><span class="o">.</span><span class="n">fitted_model</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="c1"># build the worker</span>
+    <span class="n">worker</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;n_jobs&#39;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">generator</span> <span class="o">=</span> <span class="p">(</span><span class="n">delayed</span><span class="p">(</span><span class="n">func</span><span class="p">)(</span><span class="n">par</span><span class="p">)</span> <span class="k">for</span> <span class="n">par</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">param_field</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">generator</span> <span class="o">=</span> <span class="p">(</span><span class="n">delayed</span><span class="p">(</span><span class="n">func</span><span class="p">)(</span><span class="n">par</span><span class="p">)</span> <span class="k">for</span> <span class="n">par</span> <span class="ow">in</span> <span class="n">param_field</span><span class="p">)</span>
+
+    <span class="c1"># run</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">worker</span><span class="p">(</span><span class="n">generator</span><span class="p">)</span>
+
+    <span class="c1"># split up conf intervals</span>
+    <span class="n">conf_intervals</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">evalf</span><span class="p">)):</span>
+        <span class="c1"># unpack</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">))]</span>
+
+        <span class="c1"># create the result</span>
+        <span class="n">ql</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">qu</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">conf_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">ql</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">qu</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="p">))</span>
+        <span class="p">)</span>
+
+    <span class="c1"># return</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">conf_intervals</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">conf_intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">conf_intervals</span></div>
+</pre></div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Mirko Mälicke.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

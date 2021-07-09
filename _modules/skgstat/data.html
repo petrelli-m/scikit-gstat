@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>skgstat.data &#8212; SciKit GStat 0.6.6 documentation</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../index.html">
+<p class="title">SciKit GStat</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../install.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../getting_started.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../userguide/userguide.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../tutorials/tutorials.html">
+  Tutorials
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../technical/technical.html">
+  Technical Notes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../reference/reference.html">
+  Code Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../changelog.html">
+  Changelog
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://mmaelicke.github.io/scikit-gstat/SciKitGStat.pdf">
+  PDF
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/mmaelicke/scikit-gstat" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for skgstat.data</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">skgstat.data</span> <span class="kn">import</span> <span class="n">_loader</span>
+<span class="kn">from</span> <span class="nn">skgstat.data._loader</span> <span class="kn">import</span> <span class="n">field_names</span>
+
+<span class="c1"># define all names</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">field_names</span><span class="p">()</span>
+
+<span class="n">origins</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">pancake</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Image of a pancake with apparent spatial structure.</span>
+<span class="s2">    Copyright Mirko Mälicke, 2020. If you use this data,</span>
+<span class="s2">    cite SciKit-GStat: https://doi.org/10.5281/zenodo.1345584</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">aniso</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;Random field greyscale image with geometric anisotropy.</span>
+<span class="s2">    The anisotropy in North-East direction has a factor of 3. The random</span>
+<span class="s2">    field was generated using gstools.</span>
+<span class="s2">    Copyright Mirko Mälicke, 2020. If you use this data,</span>
+<span class="s2">    cite SciKit-GStat: https://doi.org/10.5281/zenodo.1345584</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">meuse</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;&quot;Sample dataset of real measurements of heavy metal pollutions</span>
+<span class="s2">    in the topsoil on a 15x15 meter plot along the river Meuse.</span>
+<span class="s2">    The data is distributed along with the R-package sp.</span>
+<span class="s2">    IMPORTANT: If you use this data, cite Pebesma and Bivand (2005)</span>
+<span class="s2">    and Bivand et al (2013):</span>
+
+<span class="s2">      Pebesma EJ, Bivand RS (2005). “Classes and methods for spatial</span>
+<span class="s2">      data in R.” R News, 5(2), 9–13. https://CRAN.R-project.org/doc/Rnews/.</span>
+
+<span class="s2">      Bivand RS, Pebesma E, Gomez-Rubio V (2013). Applied spatial data</span>
+<span class="s2">      analysis with R, Second edition. Springer, NY. https://asdar-book.org/.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+<span class="p">)</span>
+
+
+<span class="c1"># define the functions</span>
+<div class="viewcode-block" id="pancake"><a class="viewcode-back" href="../../reference/data.html#skgstat.data.pancake">[docs]</a><span class="k">def</span> <span class="nf">pancake</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">band</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sample of the :func:`pancake_field &lt;skgstat.data.pancake_field&gt;`.</span>
+<span class="sd">    By default, the Red band is sampled at 500 random</span>
+<span class="sd">    location without replacement.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    N : int</span>
+<span class="sd">        Number of sample points to use.</span>
+<span class="sd">    band : int</span>
+<span class="sd">        can be 0 (Red), 1 (Green), 2 (Blue) or ``&#39;mean&#39;``, which</span>
+<span class="sd">        will average all three RGB bands</span>
+<span class="sd">    seed : int</span>
+<span class="sd">        By default a seed is set to always return the same</span>
+<span class="sd">        sample for same N and band input</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    result : dict</span>
+<span class="sd">        Dictionary of the sample and a citation information.</span>
+<span class="sd">        The sample is a tuple of two numpy arrays.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :func:`get_sample &lt;skgstat.data._loader.get_sample&gt;`</span>
+<span class="sd">    :func:`pancake_field &lt;skgstat.data.pancake_field&gt;`</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The image originates from a photograph of an actual pancake.</span>
+<span class="sd">    The image was cropped to an 500x500 pixel extent keeping the</span>
+<span class="sd">    center of the original photograph.</span>
+<span class="sd">    If you use this example somewhere else, please cite</span>
+<span class="sd">    SciKit-GStat [501]_, as it is distributed with the library.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [501] Mirko Mälicke, Helge David Schneider, Sebastian Müller,</span>
+<span class="sd">        &amp; Egil Möller. (2021, April 20). mmaelicke/scikit-gstat: A scipy</span>
+<span class="sd">        flavoured geostatistical variogram analysis toolbox (Version v0.5.0).</span>
+<span class="sd">        Zenodo. http://doi.org/10.5281/zenodo.4704356</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">_loader</span><span class="o">.</span><span class="n">get_sample</span><span class="p">(</span><span class="s1">&#39;pancake&#39;</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">band</span><span class="o">=</span><span class="n">band</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">sample</span><span class="o">=</span><span class="n">sample</span><span class="p">,</span>
+        <span class="n">origin</span><span class="o">=</span><span class="n">origins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pancake&#39;</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="pancake_field"><a class="viewcode-back" href="../../reference/data.html#skgstat.data.pancake_field">[docs]</a><span class="k">def</span> <span class="nf">pancake_field</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Image of a pancake with apparent spatial structure.</span>
+<span class="sd">    The pankcake has three RGB bands.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    band : int</span>
+<span class="sd">        can be 0 (Red), 1 (Green), 2 (Blue) or ``&#39;mean&#39;``, which</span>
+<span class="sd">        will average all three RGB bands</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    result : dict</span>
+<span class="sd">        Dictionary of the sample and a citation information.</span>
+<span class="sd">        The sample is 2D numpy array of the field.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    skgstat.data._loader.field</span>
+<span class="sd">    skgstat.data.pancake</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The image originates from a photograph of an actual pancake.</span>
+<span class="sd">    The image was cropped to an 500x500 pixel extent keeping the</span>
+<span class="sd">    center of the original photograph.</span>
+<span class="sd">    If you use this example somewhere else, please cite</span>
+<span class="sd">    SciKit-GStat [501]_, as it is distributed with the library.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [501] Mirko Mälicke, Helge David Schneider, Sebastian Müller,</span>
+<span class="sd">        &amp; Egil Möller. (2021, April 20). mmaelicke/scikit-gstat: A scipy</span>
+<span class="sd">        flavoured geostatistical variogram analysis toolbox (Version v0.5.0).</span>
+<span class="sd">        Zenodo. http://doi.org/10.5281/zenodo.4704356</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">_loader</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;pancake&#39;</span><span class="p">,</span> <span class="n">band</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">sample</span><span class="o">=</span><span class="n">sample</span><span class="p">,</span>
+        <span class="n">origin</span><span class="o">=</span><span class="n">origins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pancake&#39;</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="aniso"><a class="viewcode-back" href="../../reference/data.html#skgstat.data.aniso">[docs]</a><span class="k">def</span> <span class="nf">aniso</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sample of the :func:`ansio_field &lt;skgstat.data.aniso_field&gt;`.</span>
+<span class="sd">    By default the greyscale image is sampled</span>
+<span class="sd">    at 500 random locations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    N : int</span>
+<span class="sd">        Number of sample points to use.</span>
+<span class="sd">    seed : int</span>
+<span class="sd">        By default a seed is set to always return the same</span>
+<span class="sd">        sample for same N and band input</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    result : dict</span>
+<span class="sd">        Dictionary of the sample and a citation information.</span>
+<span class="sd">        The sample is a tuple of two numpy arrays.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    skgstat.data._loader.field : field loader</span>
+<span class="sd">    aniso_field : Return the full field</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This image was created using :any:`gstools.SRF`.</span>
+<span class="sd">    The spatial random field was created using a Gaussian model</span>
+<span class="sd">    and has a size of 500x500 pixel. The created field</span>
+<span class="sd">    was normalized and rescaled to the value range of a</span>
+<span class="sd">    :any:`uint8 &lt;numpy.uint8&gt;`.</span>
+<span class="sd">    The spatial model includes a small nugget (~ 1/25 of the value range).</span>
+<span class="sd">    If you use this example somewhere else, please cite</span>
+<span class="sd">    SciKit-GStat [501]_, as it is distributed with the library.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [501] Mirko Mälicke, Helge David Schneider, Sebastian Müller,</span>
+<span class="sd">        &amp; Egil Möller. (2021, April 20). mmaelicke/scikit-gstat: A scipy</span>
+<span class="sd">        flavoured geostatistical variogram analysis toolbox (Version v0.5.0).</span>
+<span class="sd">        Zenodo. http://doi.org/10.5281/zenodo.4704356</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">_loader</span><span class="o">.</span><span class="n">get_sample</span><span class="p">(</span><span class="s1">&#39;aniso&#39;</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">sample</span><span class="o">=</span><span class="n">sample</span><span class="p">,</span>
+        <span class="n">origin</span><span class="o">=</span><span class="n">origins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;aniso&#39;</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="aniso_field"><a class="viewcode-back" href="../../reference/data.html#skgstat.data.aniso_field">[docs]</a><span class="k">def</span> <span class="nf">aniso_field</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Image of a greyscale image with geometric anisotropy.</span>
+<span class="sd">    The anisotropy has a North-Easth orientation and has</span>
+<span class="sd">    a approx. 3 times larger correlation length than in</span>
+<span class="sd">    the perpendicular orientation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    result : dict</span>
+<span class="sd">        Dictionary of the sample and a citation information.</span>
+<span class="sd">        The sample a numpy array repesenting the image.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    skgstat.data._loader.field : field loader</span>
+<span class="sd">    aniso : Return a sample</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This image was created using :any:`gstools.SRF`.</span>
+<span class="sd">    The spatial random field was created using a Gaussian model</span>
+<span class="sd">    and has a size of 500x500 pixel. The created field</span>
+<span class="sd">    was normalized and rescaled to the value range of a</span>
+<span class="sd">    :any:`uint8 &lt;numpy.uint8&gt;`.</span>
+<span class="sd">    The spatial model includes a small nugget (~ 1/25 of the value range).</span>
+<span class="sd">    If you use this example somewhere else, please cite</span>
+<span class="sd">    SciKit-GStat [501]_, as it is distributed with the library.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [501] Mirko Mälicke, Helge David Schneider, Sebastian Müller,</span>
+<span class="sd">        &amp; Egil Möller. (2021, April 20). mmaelicke/scikit-gstat: A scipy</span>
+<span class="sd">        flavoured geostatistical variogram analysis toolbox (Version v0.5.0).</span>
+<span class="sd">        Zenodo. http://doi.org/10.5281/zenodo.4704356</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">_loader</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s1">&#39;aniso&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">sample</span><span class="o">=</span><span class="n">sample</span><span class="p">,</span>
+        <span class="n">origin</span><span class="o">=</span><span class="n">origins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;aniso&#39;</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">meuse</span><span class="p">(</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;lead&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns one of the samples of the well-known Meuse dataset.</span>
+<span class="sd">    You can specify which heave metal data you want to load.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    result : dict</span>
+<span class="sd">        Dictionary of the sample and a citation information.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The example data was taken from the R package &#39;sp&#39;</span>
+<span class="sd">    as published on CRAN: https://cran.r-project.org/package=sp</span>
+<span class="sd">    The package is licensed under GPL-3, which applies</span>
+<span class="sd">    to the sample if used somewhere else.</span>
+<span class="sd">    If you use this sample, please cite the original sources</span>
+<span class="sd">    [502]_, [503]_ and not SciKit-GStat.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [502] Pebesma EJ, Bivand RS (2005). “Classes and methods for spatial</span>
+<span class="sd">      data in R.” R News, 5(2), 9–13. https://CRAN.R-project.org/doc/Rnews/.</span>
+
+<span class="sd">    .. [503] Bivand RS, Pebesma E, Gomez-Rubio V (2013). Applied spatial data</span>
+<span class="sd">      analysis with R, Second edition. Springer, NY. https://asdar-book.org/.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># check variable</span>
+    <span class="k">if</span> <span class="n">variable</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;cadmium&#39;</span><span class="p">,</span> <span class="s1">&#39;copper&#39;</span><span class="p">,</span> <span class="s1">&#39;lead&#39;</span><span class="p">,</span> <span class="s1">&#39;zinc&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+            <span class="s2">&quot;variable has to be in [&#39;cadmium&#39;, &#39;copper&#39;, &#39;lead&#39;, &#39;zinc&#39;]&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># get the data</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">_loader</span><span class="o">.</span><span class="n">read_sample_file</span><span class="p">(</span><span class="s1">&#39;meuse.txt&#39;</span><span class="p">)</span>
+
+    <span class="c1"># get the coordinates</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># get the correct variable</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">variable</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># return</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">sample</span><span class="o">=</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="p">),</span>
+        <span class="n">origin</span><span class="o">=</span><span class="n">origins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;meuse&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Mirko Mälicke.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
